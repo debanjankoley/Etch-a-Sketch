@@ -1,0 +1,9 @@
+.square {
+    border: 1px solid black;
+}
+
+.container .square {
+    display: flex;
+    width: 500px;
+    height: 30px;
+}
