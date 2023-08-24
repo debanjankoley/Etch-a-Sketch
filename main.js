@@ -21,16 +21,43 @@ function createGrid() {
 }
 
 
-// this section colors grid black when hover the div with mouse
+// this section colors the grid when hover the div with mouse
 let square = document.querySelectorAll(".square");
-square.forEach(square => square.addEventListener('mouseover', 
-    (e) => e.target.classList.add("color")));
+let selectedColor = `rgb(0,0,0)`;
+
+function hoverColors() {
+    square.forEach(square => square.addEventListener('mouseover', 
+    (e) => e.target.style.backgroundColor = selectedColor));
+}
+hoverColors();
+
+const eraser = document.querySelector(".eraser");   // eraser selects white color
+eraser.addEventListener("click", () => {
+    selectedColor = `rgb(255,255,255)`;
+    hoverColors();
+});
+
+const ink = document.querySelector(".ink");          // ink selects black color
+ink.addEventListener("click", () => {
+    selectedColor = `rgb(0,0,0)`;
+    hoverColors();
+});
+
+const random = document.querySelector(".random");             // random color
+function randomNumber(number) {
+    return Math.floor(Math.random() * (number + 1));
+}
+random.addEventListener("click", () => {
+    color = "rnd";
+    selectedColor = `rgb(${randomNumber(255)},${randomNumber(255)},${randomNumber(255)})`;
+    hoverColors();
+})
 
 
 // this section clears the grid when reset button is clicked
 const resetButton = document.querySelector(".reset");
 function toReset(e) {
-    square.forEach(square => square.classList.remove("color"));
+    square.forEach(square => square.style.backgroundColor = `rgb(255,255,255)`);
 };
 resetButton.addEventListener("click", toReset);
 
@@ -52,8 +79,7 @@ function gettingInput(e) {
         squaresInYaxis = inputYaxis;
         createGrid();
         square = document.querySelectorAll(".square");
-        square.forEach(square => square.addEventListener('mouseover', 
-            (e) => e.target.classList.add("color")));
+        hoverColors();
     }
 }
 userInput.addEventListener("click", gettingInput);
