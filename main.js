@@ -38,7 +38,7 @@ hoverColors();
 
 const eraser = document.querySelector(".eraser");   // eraser selects white color
 eraser.addEventListener("click", () => {
-    selectedColor = `rgb(255,255,255)`;
+    selectedColor = `rgb(238,174,202)`;
     hoverColors();
 });
 
@@ -61,7 +61,7 @@ random.addEventListener("click", () => {
 // this section clears the grid when reset button is clicked
 const resetButton = document.querySelector(".reset");
 function toReset(e) {
-    square.forEach(square => square.style.backgroundColor = `rgb(255,255,255)`);
+    square.forEach(square => square.style.backgroundColor = `rgb(238,174,202)`);
 };
 resetButton.addEventListener("click", toReset);
 
