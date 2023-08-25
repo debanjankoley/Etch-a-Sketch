@@ -36,19 +36,19 @@ function hoverColors() {
 }
 hoverColors();
 
-const eraser = document.querySelector(".eraser");   // eraser selects white color
+const eraser = document.querySelector(".eraser");       // eraser selects white color
 eraser.addEventListener("click", () => {
     selectedColor = `rgb(238,174,202)`;
     hoverColors();
 });
 
-const ink = document.querySelector(".ink");          // ink selects black color
+const ink = document.querySelector(".ink");             // ink selects black color
 ink.addEventListener("click", () => {
     selectedColor = `rgb(0,0,0)`;
     hoverColors();
 });
 
-const random = document.querySelector(".random");             // random color
+const random = document.querySelector(".random");       // random color
 function randomNumber(number) {
     return Math.floor(Math.random() * (number + 1));
 }
@@ -74,7 +74,7 @@ function gettingInput(e) {
     if (isNaN(inputXaxis) || isNaN(inputYaxis) || 
         inputXaxis <= 0 || inputYaxis <= 0 || 
         inputXaxis > 100 || inputYaxis > 100) {
-        alert("Cancelled. Add a number between 1 to 100");
+        alert("Cancelled. Enter a number between 1 to 100 to resize");
     } else {
         while (container.firstChild) {
             container.removeChild(container.lastChild);
@@ -87,3 +87,12 @@ function gettingInput(e) {
     }
 }
 userInput.addEventListener("click", gettingInput);
+
+//  this section highlights the choosen button
+const highlightButton = document.querySelectorAll(".btn")
+highlightButton.forEach(button => button.addEventListener("click", (e) => {
+    for (i = 0; i < 3; i++) {
+        highlightButton[i].classList.remove("highlight");
+    };
+    e.target.classList.add("highlight");
+}))
