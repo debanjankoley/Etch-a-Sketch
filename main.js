@@ -26,8 +26,13 @@ let square = document.querySelectorAll(".square");
 let selectedColor = `rgb(0,0,0)`;
 
 function hoverColors() {
-    square.forEach(square => square.addEventListener('mouseover', 
-    (e) => e.target.style.backgroundColor = selectedColor));
+    if (selectedColor === "rnd") {
+        square.forEach(square => square.addEventListener('mouseover', 
+        (e) => e.target.style.backgroundColor = `rgb(${randomNumber(255)},${randomNumber(255)},${randomNumber(255)})`));    
+    } else {
+        square.forEach(square => square.addEventListener('mouseover', 
+        (e) => e.target.style.backgroundColor = selectedColor));
+    }
 }
 hoverColors();
 
@@ -48,8 +53,7 @@ function randomNumber(number) {
     return Math.floor(Math.random() * (number + 1));
 }
 random.addEventListener("click", () => {
-    color = "rnd";
-    selectedColor = `rgb(${randomNumber(255)},${randomNumber(255)},${randomNumber(255)})`;
+    selectedColor = `rnd`;
     hoverColors();
 })
 
@@ -70,7 +74,7 @@ function gettingInput(e) {
     if (isNaN(inputXaxis) || isNaN(inputYaxis) || 
         inputXaxis <= 0 || inputYaxis <= 0 || 
         inputXaxis > 100 || inputYaxis > 100) {
-        alert("Invalid number. Add a number from 1 to 100");
+        alert("Cancelled. Add a number between 1 to 100");
     } else {
         while (container.firstChild) {
             container.removeChild(container.lastChild);
